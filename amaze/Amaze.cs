@@ -8,6 +8,7 @@ public interface IOutputable
 	void Initial(int horizontal, int randomInt);
 }
 
+// TODO, make work pls
 public class TextOnlyMazeOutput : IOutputable
 {
 	public void Output(string s)

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "amaze_new", "amaze_new\amaze_new.csproj", "{BBC098D5-767C-409D-9631-E5DBC0F2D844}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "amaze_new_new.tests", "amaze_new_new.tests\amaze_new_new.tests.csproj", "{755889DE-5621-4C0D-85E0-5E8983EF1782}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBC098D5-767C-409D-9631-E5DBC0F2D844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBC098D5-767C-409D-9631-E5DBC0F2D844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBC098D5-767C-409D-9631-E5DBC0F2D844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBC098D5-767C-409D-9631-E5DBC0F2D844}.Release|Any CPU.Build.0 = Release|Any CPU
+		{755889DE-5621-4C0D-85E0-5E8983EF1782}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{755889DE-5621-4C0D-85E0-5E8983EF1782}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{755889DE-5621-4C0D-85E0-5E8983EF1782}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{755889DE-5621-4C0D-85E0-5E8983EF1782}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

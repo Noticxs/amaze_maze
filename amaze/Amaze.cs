@@ -1,5 +1,6 @@
 // using System;
 
+namespace amaze_new;
 
 public interface IOutputable
 {
@@ -84,7 +85,7 @@ public class TextOnlyMazeOutput : IOutputable
 // 	{}
 // }
 
-public class Amaze
+public static class Amaze
 {
 	public static string Result = "";
 	private static int Target { get; set; } = 0;
@@ -691,4 +692,3 @@ public class Amaze
 		}
 	}
 }
-

@@ -1,3 +1,5 @@
+using amaze_new;
+
 namespace amaze_new_new.test;
 
 [TestFixture]

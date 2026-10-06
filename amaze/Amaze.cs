@@ -78,6 +78,7 @@ public class TextOnlyMazeOutput : IOutputable
 	}
 }
 
+// TODO, fix this so not just text will work
 // public class PixelSystem.Console.WriteLine(Result);
 // {
 // 	OnlyMazeOutput : IOutputable
@@ -87,7 +88,7 @@ public class TextOnlyMazeOutput : IOutputable
 
 public static class Amaze
 {
-	public static string Result = "";
+	public static string Result = ""; // TODO, make accessible without being public
 	private static int Target { get; set; } = 0;
 	public static Random RandomSeed { get; set; } = new Random(0);
 

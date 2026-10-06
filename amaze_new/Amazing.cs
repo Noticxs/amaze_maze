@@ -7,11 +7,11 @@ public class Amazing
 
 	public static void Main(string[] args)
 	{
-		doit(int.Parse(args[0]),int.Parse(args[1]));
+		Doit(int.Parse(args[0]),int.Parse(args[1]));
 		System.Console.WriteLine(result);
 	}
 
-	private static void clear()
+	private static void Clear()
 	{
 		result = "";
 	}
@@ -26,40 +26,39 @@ public class Amazing
 		result += text;
 	}
 
-	public static int rnd(int count) 
+	private static int Random(int count) 
 	{
 		return (int) (count * random.NextDouble()) + 1;
 	}
 
-	public static void GOTO(int lineno) 
+	private static void Goto(int lineno) 
 	{
 		target = lineno;
 	}
 
-	public static void doit(int horizontal, int vertical) 
+	public static void Doit(int horizontal_original, int vertical_original) 
 	{
-		clear();
+		Clear();
 		print("Amazing - Copyright by Creative Computing, Morristown, NJ");
 		println();
 
-		int h = horizontal;
-		int v = vertical;
-		if (h == 1 || v == 1) return;
-
-		int[,] wArray = new int[h + 1,v + 1];
 		
+		// Set default variable values
+		int horizontal = horizontal_original;
+		int verticle = vertical_original;
+		if ( horizontal == 1 || verticle == 1) return;
 
-		int[,] vArray = new int[h + 1,v + 1];
+		int[,] widthArray = new int[ horizontal + 1,verticle + 1];
+		int[,] verticalArray = new int[ horizontal + 1,verticle + 1];
 		
-
 		int q = 0;
 		int z = 0;
-		int x = rnd(h);
+		int randomInt = Random( horizontal);
 
 		// 130:170
-		for (int i = 1; i <= h; i++) 
+		for (int i = 1; i <=  horizontal; i++) 
 		{
-			if (i == x)
+			if (i == randomInt)
 				print(":  ");
 			else
 				print(":--");
@@ -70,559 +69,559 @@ public class Amazing
 
 		// 190
 		int c = 1;
-		wArray[x,1] = c;
+		widthArray[randomInt,1] = c;
 		c++;
 
 		// 200
-		int r = x;
+		int r = randomInt;
 		int s = 1;
-		GOTO(270);
+		Goto(270);
 
 		while (target != -1) 
 		{
 			switch (target) 
 			{
 				case 210:
-					if (r != h)
-						GOTO(250);
+					if (r !=  horizontal)
+						Goto(250);
 					else
-						GOTO(220);
+						Goto(220);
 					continue;
 				case 220:
-					if (s != v)
-						GOTO(240);
+					if (s != verticle)
+						Goto(240);
 					else
-						GOTO(230);
+						Goto(230);
 					continue;
 				case 230:
 					r = 1;
 					s = 1;
-					GOTO(260);
+					Goto(260);
 					continue;
 				case 240:
 					r = 1;
 					s++;
-					GOTO(260);
+					Goto(260);
 					continue;
 				case 250:
 					r++;
-					GOTO(260);
+					Goto(260);
 					continue;
 				case 260:
-					if (wArray[r,s] == 0)
-						GOTO(210);
+					if (widthArray[r,s] == 0)
+						Goto(210);
 					else
-						GOTO(270);
+						Goto(270);
 					continue;
 				case 270:
 					if (r - 1 == 0)
-						GOTO(600);
+						Goto(600);
 					else
-						GOTO(280);
+						Goto(280);
 					continue;
 				case 280:
-					if (wArray[r - 1,s] != 0)
-						GOTO(600);
+					if (widthArray[r - 1,s] != 0)
+						Goto(600);
 					else
-						GOTO(290);
+						Goto(290);
 					continue;
 				case 290:
 					if (s - 1 == 0)
-						GOTO(430);
+						Goto(430);
 					else
-						GOTO(300);
+						Goto(300);
 					continue;
 				case 300:
-					if (wArray[r,s - 1] != 0)
-						GOTO(430);
+					if (widthArray[r,s - 1] != 0)
+						Goto(430);
 					else
-						GOTO(310);
+						Goto(310);
 					continue;
 				case 310:
-					if (r == h)
-						GOTO(350);
+					if (r ==  horizontal)
+						Goto(350);
 					else
-						GOTO(320);
+						Goto(320);
 					continue;
 				case 320:
-					if (wArray[r + 1,s] != 0)
-						GOTO(350);
+					if (widthArray[r + 1,s] != 0)
+						Goto(350);
 					else
-						GOTO(330);
+						Goto(330);
 					continue;
 				case 330:
-					x = rnd(3);
-					GOTO(340);
+					randomInt = Random(3);
+					Goto(340);
 					continue;
 				case 340:
-					if (x == 1)
-						GOTO(940);
-					else if (x == 2)
-						GOTO(980);
-					else if (x == 3)
-						GOTO(1020);
+					if (randomInt == 1)
+						Goto(940);
+					else if (randomInt == 2)
+						Goto(980);
+					else if (randomInt == 3)
+						Goto(1020);
 					else
-						GOTO(350);
+						Goto(350);
 					continue;
 				case 350:
-					if (s != v)
-						GOTO(380);
+					if (s != verticle)
+						Goto(380);
 					else
-						GOTO(360);
+						Goto(360);
 					continue;
 				case 360:
 					if (z == 1)
-						GOTO(410);
+						Goto(410);
 					else
-						GOTO(370);
+						Goto(370);
 					continue;
 				case 370:
 					q = 1;
-					GOTO(390);
+					Goto(390);
 					continue;
 				case 380:
-					if (wArray[r,s + 1] != 0)
-						GOTO(410);
+					if (widthArray[r,s + 1] != 0)
+						Goto(410);
 					else
-						GOTO(390);
+						Goto(390);
 					continue;
 				case 390:
-					x = rnd(3);
-					GOTO(400);
+					randomInt = Random(3);
+					Goto(400);
 					continue;
 				case 400:
-					if (x == 1)
-						GOTO(940);
-					else if (x == 2)
-						GOTO(980);
-					else if (x == 3)
-						GOTO(1090);
+					if (randomInt == 1)
+						Goto(940);
+					else if (randomInt == 2)
+						Goto(980);
+					else if (randomInt == 3)
+						Goto(1090);
 					else
-						GOTO(410);
+						Goto(410);
 					continue;
 				case 410:
-					x = rnd(2);
-					GOTO(420);
+					randomInt = Random(2);
+					Goto(420);
 					continue;
 				case 420:
-					if (x == 1)
-						GOTO(940);
-					else if (x == 2)
-						GOTO(980);
+					if (randomInt == 1)
+						Goto(940);
+					else if (randomInt == 2)
+						Goto(980);
 					else
-						GOTO(430);
+						Goto(430);
 					continue;
 				case 430:
-					if (r == h)
-						GOTO(530);
+					if (r ==  horizontal)
+						Goto(530);
 					else
-						GOTO(440);
+						Goto(440);
 					continue;
 				case 440:
-					if (wArray[r + 1,s] != 0)
-						GOTO(530);
+					if (widthArray[r + 1,s] != 0)
+						Goto(530);
 					else
-						GOTO(450);
+						Goto(450);
 					continue;
 				case 450:
-					if (s != v)
-						GOTO(480);
+					if (s != verticle)
+						Goto(480);
 					else
-						GOTO(460);
+						Goto(460);
 					continue;
 				case 460:
 					if (z == 1)
-						GOTO(510);
+						Goto(510);
 					else
-						GOTO(470);
+						Goto(470);
 					continue;
 				case 470:
 					q = 1;
-					GOTO(490);
+					Goto(490);
 					continue;
 				case 480:
-					if (wArray[r,s + 1] != 0)
-						GOTO(510);
+					if (widthArray[r,s + 1] != 0)
+						Goto(510);
 					else
-						GOTO(490);
+						Goto(490);
 					continue;
 				case 490:
-					x = rnd(3);
-					GOTO(500);
+					randomInt = Random(3);
+					Goto(500);
 					continue;
 				case 500:
-					if (x == 1)
-						GOTO(940);
-					else if (x == 2)
-						GOTO(1020);
-					else if (x == 3)
-						GOTO(1090);
+					if (randomInt == 1)
+						Goto(940);
+					else if (randomInt == 2)
+						Goto(1020);
+					else if (randomInt == 3)
+						Goto(1090);
 					else
-						GOTO(510);
+						Goto(510);
 					continue;
 				case 510:
-					x = rnd(2);
-					GOTO(520);
+					randomInt = Random(2);
+					Goto(520);
 					continue;
 				case 520:
-					if (x == 1)
-						GOTO(940);
-					else if (x == 2)
-						GOTO(1020);
+					if (randomInt == 1)
+						Goto(940);
+					else if (randomInt == 2)
+						Goto(1020);
 					else
-						GOTO(530);
+						Goto(530);
 					continue;
 				case 530:
-					if (s != v)
-						GOTO(560);
+					if (s != verticle)
+						Goto(560);
 					else
-						GOTO(540);
+						Goto(540);
 					continue;
 				case 540:
 					if (z == 1)
-						GOTO(590);
+						Goto(590);
 					else
-						GOTO(550);
+						Goto(550);
 					continue;
 				case 550:
 					q = 1;
-					GOTO(570);
+					Goto(570);
 					continue;
 				case 560:
-					if (wArray[r,s + 1] != 0)
-						GOTO(590);
+					if (widthArray[r,s + 1] != 0)
+						Goto(590);
 					else
-						GOTO(570);
+						Goto(570);
 					continue;
 				case 570:
-					x = rnd(2);
-					GOTO(580);
+					randomInt = Random(2);
+					Goto(580);
 					continue;
 				case 580:
-					if (x == 1)
-						GOTO(940);
-					else if (x == 2)
-						GOTO(1090);
+					if (randomInt == 1)
+						Goto(940);
+					else if (randomInt == 2)
+						Goto(1090);
 					else
-						GOTO(590);
+						Goto(590);
 					continue;
 				case 590:
-					GOTO(940);
+					Goto(940);
 					continue;
 				case 600:
 					if (s - 1 == 0)
-						GOTO(790);
+						Goto(790);
 					else
-						GOTO(610);
+						Goto(610);
 					continue;
 				case 610:
-					if (wArray[r,s - 1] != 0)
-						GOTO(790);
+					if (widthArray[r,s - 1] != 0)
+						Goto(790);
 					else
-						GOTO(620);
+						Goto(620);
 					continue;
 				case 620:
-					if (r == h)
-						GOTO(720);
+					if (r ==  horizontal)
+						Goto(720);
 					else
-						GOTO(630);
+						Goto(630);
 					continue;
 				case 630:
-					if (wArray[r + 1,s] != 0)
-						GOTO(720);
+					if (widthArray[r + 1,s] != 0)
+						Goto(720);
 					else
-						GOTO(640);
+						Goto(640);
 					continue;
 				case 640:
-					if (s != v)
-						GOTO(670);
+					if (s != verticle)
+						Goto(670);
 					else
-						GOTO(650);
+						Goto(650);
 					continue;
 				case 650:
 					if (z == 1)
-						GOTO(700);
+						Goto(700);
 					else
-						GOTO(660);
+						Goto(660);
 					continue;
 				case 660:
 					q = 1;
-					GOTO(680);
+					Goto(680);
 					continue;
 				case 670:
-					if (wArray[r,s + 1] != 0)
-						GOTO(700);
+					if (widthArray[r,s + 1] != 0)
+						Goto(700);
 					else
-						GOTO(680);
+						Goto(680);
 					continue;
 				case 680:
-					x = rnd(3);
-					GOTO(690);
+					randomInt = Random(3);
+					Goto(690);
 					continue;
 				case 690:
-					if (x == 1)
-						GOTO(980);
-					else if (x == 2)
-						GOTO(1020);
-					else if (x == 3)
-						GOTO(1090);
+					if (randomInt == 1)
+						Goto(980);
+					else if (randomInt == 2)
+						Goto(1020);
+					else if (randomInt == 3)
+						Goto(1090);
 					else
-						GOTO(700);
+						Goto(700);
 					continue;
 				case 700:
-					x = rnd(2);
-					GOTO(710);
+					randomInt = Random(2);
+					Goto(710);
 					continue;
 				case 710:
-					if (x == 1)
-						GOTO(980);
-					else if (x == 2)
-						GOTO(1020);
+					if (randomInt == 1)
+						Goto(980);
+					else if (randomInt == 2)
+						Goto(1020);
 					else
-						GOTO(720);
+						Goto(720);
 					continue;
 				case 720:
-					if (s != v)
-						GOTO(750);
+					if (s != verticle)
+						Goto(750);
 					else
-						GOTO(730);
+						Goto(730);
 					continue;
 				case 730:
 					if (z == 1)
-						GOTO(780);
+						Goto(780);
 					else
-						GOTO(740);
+						Goto(740);
 					continue;
 				case 740:
 					q = 1;
-					GOTO(760);
+					Goto(760);
 					continue;
 				case 750:
-					if (wArray[r,s + 1] != 0)
-						GOTO(780);
+					if (widthArray[r,s + 1] != 0)
+						Goto(780);
 					else
-						GOTO(760);
+						Goto(760);
 					continue;
 				case 760:
-					x = rnd(2);
-					GOTO(770);
+					randomInt = Random(2);
+					Goto(770);
 					continue;
 				case 770:
-					if (x == 1)
-						GOTO(980);
-					else if (x == 2)
-						GOTO(1090);
+					if (randomInt == 1)
+						Goto(980);
+					else if (randomInt == 2)
+						Goto(1090);
 					else
-						GOTO(780);
+						Goto(780);
 					continue;
 				case 780:
-					GOTO(980);
+					Goto(980);
 					continue;
 				case 790:
-					if (r == h)
-						GOTO(880);
+					if (r ==  horizontal)
+						Goto(880);
 					else
-						GOTO(800);
+						Goto(800);
 					continue;
 				case 800:
-					if (wArray[r + 1,s] != 0)
-						GOTO(880);
+					if (widthArray[r + 1,s] != 0)
+						Goto(880);
 					else
-						GOTO(810);
+						Goto(810);
 					continue;
 				case 810:
-					if (s != v)
-						GOTO(840);
+					if (s != verticle)
+						Goto(840);
 					else
-						GOTO(820);
+						Goto(820);
 					continue;
 				case 820:
 					if (z == 1)
-						GOTO(870);
+						Goto(870);
 					else
-						GOTO(830);
+						Goto(830);
 					continue;
 				case 830:
 					q = 1;
-					GOTO(990);
+					Goto(990);
 					continue;
 				case 840:
-					if (wArray[r,s + 1] != 0)
-						GOTO(870);
+					if (widthArray[r,s + 1] != 0)
+						Goto(870);
 					else
-						GOTO(850);
+						Goto(850);
 					continue;
 				case 850:
-					x = rnd(2);
-					GOTO(860);
+					randomInt = Random(2);
+					Goto(860);
 					continue;
 				case 860:
-					if (x == 1)
-						GOTO(1020);
-					else if (x == 2)
-						GOTO(1090);
+					if (randomInt == 1)
+						Goto(1020);
+					else if (randomInt == 2)
+						Goto(1090);
 					else
-						GOTO(870);
+						Goto(870);
 					continue;
 				case 870:
-					GOTO(1020);
+					Goto(1020);
 					continue;
 				case 880:
-					if (s != v)
-						GOTO(910);
+					if (s != verticle)
+						Goto(910);
 					else
-						GOTO(890);
+						Goto(890);
 					continue;
 				case 890:
 					if (z == 1)
-						GOTO(930);
+						Goto(930);
 					else
-						GOTO(900);
+						Goto(900);
 					continue;
 				case 900:
 					q = 1;
-					GOTO(920);
+					Goto(920);
 					continue;
 				case 910:
-					if (wArray[r,s + 1] != 0)
-						GOTO(930);
+					if (widthArray[r,s + 1] != 0)
+						Goto(930);
 					else
-						GOTO(920);
+						Goto(920);
 					continue;
 				case 920:
-					GOTO(1090);
+					Goto(1090);
 					continue;
 				case 930:
-					GOTO(1190);
+					Goto(1190);
 					continue;
 				case 940:
-					wArray[r - 1,s] = c;
-					GOTO(950);
+					widthArray[r - 1,s] = c;
+					Goto(950);
 					continue;
 				case 950:
 					c++;
-					vArray[r - 1,s] = 2;
+					verticalArray[r - 1,s] = 2;
 					r--;
-					GOTO(960);
+					Goto(960);
 					continue;
 				case 960:
-					if (c == h * v + 1)
-						GOTO(1200);
+					if (c ==  horizontal * verticle + 1)
+						Goto(1200);
 					else
-						GOTO(970);
+						Goto(970);
 					continue;
 				case 970:
 					q = 0;
-					GOTO(270);
+					Goto(270);
 					continue;
 				case 980:
-					wArray[r,s - 1] = c;
-					GOTO(990);
+					widthArray[r,s - 1] = c;
+					Goto(990);
 					continue;
 				case 990:
 					c++;
-					GOTO(1000);
+					Goto(1000);
 					continue;
 				case 1000:
-					vArray[r,s - 1] = 1;
+					verticalArray[r,s - 1] = 1;
 					s--;
-					if (c == h * v + 1)
-						GOTO(1200);
+					if (c ==  horizontal * verticle + 1)
+						Goto(1200);
 					else
-						GOTO(1010);
+						Goto(1010);
 					continue;
 				case 1010:
 					q = 0;
-					GOTO(270);
+					Goto(270);
 					continue;
 				case 1020:
-					wArray[r + 1,s] = c;
-					GOTO(1030);
+					widthArray[r + 1,s] = c;
+					Goto(1030);
 					continue;
 				case 1030:
 					c++;
-					if (vArray[r,s] == 0)
-						GOTO(1050);
+					if (verticalArray[r,s] == 0)
+						Goto(1050);
 					else
-						GOTO(1040);
+						Goto(1040);
 					continue;
 				case 1040:
-					vArray[r,s] = 3;
-					GOTO(1060);
+					verticalArray[r,s] = 3;
+					Goto(1060);
 					continue;
 				case 1050:
-					vArray[r,s] = 2;
-					GOTO(1060);
+					verticalArray[r,s] = 2;
+					Goto(1060);
 					continue;
 				case 1060:
 					r++;
-					GOTO(1070);
+					Goto(1070);
 					continue;
 				case 1070:
-					if (c == h * v + 1)
-						GOTO(1200);
+					if (c ==  horizontal * verticle + 1)
+						Goto(1200);
 					else
-						GOTO(1080);
+						Goto(1080);
 					continue;
 				case 1080:
-					GOTO(600);
+					Goto(600);
 					continue;
 				case 1090:
 					if (q == 1)
-						GOTO(1150);
+						Goto(1150);
 					else
-						GOTO(1100);
+						Goto(1100);
 					continue;
 				case 1100:
-					wArray[r,s + 1] = c;
+					widthArray[r,s + 1] = c;
 					c++;
-					if (vArray[r,s] == 0)
-						GOTO(1120);
+					if (verticalArray[r,s] == 0)
+						Goto(1120);
 					else
-						GOTO(1110);
+						Goto(1110);
 					continue;
 				case 1110:
-					vArray[r,s] = 3;
-					GOTO(1130);
+					verticalArray[r,s] = 3;
+					Goto(1130);
 					continue;
 				case 1120:
-					vArray[r,s] = 1;
-					GOTO(1130);
+					verticalArray[r,s] = 1;
+					Goto(1130);
 					continue;
 				case 1130:
 					s++;
-					if (c == v * h + 1)
-						GOTO(1200);
+					if (c == verticle *  horizontal + 1)
+						Goto(1200);
 					else
-						GOTO(1140);
+						Goto(1140);
 					continue;
 				case 1140:
-					GOTO(270);
+					Goto(270);
 					continue;
 				case 1150:
 					z = 1;
-					GOTO(1160);
+					Goto(1160);
 					continue;
 				case 1160:
-					if (vArray[r,s] == 0)
-						GOTO(1180);
+					if (verticalArray[r,s] == 0)
+						Goto(1180);
 					else
-						GOTO(1170);
+						Goto(1170);
 					continue;
 				case 1170:
-					vArray[r,s] = 3;
+					verticalArray[r,s] = 3;
 					q = 0;
-					GOTO(1190);
+					Goto(1190);
 					continue;
 				case 1180:
-					vArray[r,s] = 1;
+					verticalArray[r,s] = 1;
 					q = 0;
 					r = 1;
 					s = 1;
-					GOTO(260);
+					Goto(260);
 					continue;
 				case 1190:
-					GOTO(210);
+					Goto(210);
 					continue;
 				case 1200:
 					target = -1;
@@ -632,13 +631,13 @@ public class Amazing
 		}
 
 		// 1200:
-		for (int j = 1; j <= v; j++) 
+		for (int j = 1; j <= verticle; j++) 
 		{
 			print("I");        // 1210
 
-			for (int i = 1; i <= h; i++) 
+			for (int i = 1; i <=  horizontal; i++) 
 			{
-				if (vArray[i,j] >= 2)
+				if (verticalArray[i,j] >= 2)
 					print("   ");  // 1240
 				else
 					print("  I");  // 1260
@@ -647,11 +646,11 @@ public class Amazing
 			print(" ");   // 1280
 			println();
 
-			for (int i = 1; i <= h; i++) 
+			for (int i = 1; i <=  horizontal; i++) 
 			{
-				if (vArray[i,j] == 0)
+				if (verticalArray[i,j] == 0)
 					print(":--");   // 1300, 1340
-				else if (vArray[i,j] == 2)
+				else if (verticalArray[i,j] == 2)
 					print(":--");  // 1310, 1340
 				else
 					print(":  "); // 1320

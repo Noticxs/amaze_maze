@@ -50,8 +50,10 @@ I                 I  I     I     I           I
 :--:--:--:--:--:--:--:--:--:--:--:  :--:--:--:
 ";
         Amazing.random = new Random(0);
-        Amazing.doit(15, 20);
+        Amazing.Doit(15, 20);
+        
         System.Console.WriteLine(Amazing.result);
+        
         Assert.That(Amazing.result, Is.EqualTo(expected), "Should have the maze that was expected");
     }
 
@@ -72,7 +74,9 @@ I        I  I
 :--:--:--:  :
 ";
         Amazing.random = new Random(100);
-        Amazing.doit(4, 5);
+        Amazing.Doit(4, 5);
+        
+        System.Console.WriteLine(Amazing.result);
 
         Assert.That(Amazing.result, Is.EqualTo(expected), "Should have the maze that was expected");
     }

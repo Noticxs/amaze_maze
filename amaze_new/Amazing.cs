@@ -1,51 +1,51 @@
 using System;
 public class Amazing
 {
-	static int target = 0;      // where GOTO goes
-	public static Random random = new Random(0);
-	public static string result = "";
+	private static int Target { get; set; } = 0;
+	public static Random RandomSeed { get; set; } = new Random(0);
+	public static string Result = "";
 
 	public static void Main(string[] args)
 	{
 		Doit(int.Parse(args[0]),int.Parse(args[1]));
-		System.Console.WriteLine(result);
+		System.Console.WriteLine(Result);
 	}
 
 	private static void Clear()
 	{
-		result = "";
+		Result = "";
 	}
 
-	private static void println() 
+	private static void Println() 
 	{
-		result += "\n";
+		Result += "\n";
 	}
 
-	public static void print(string text) 
+	private static void Print(string text)
 	{
-		result += text;
+		Result += text;
 	}
 
 	private static int Random(int count) 
 	{
-		return (int) (count * random.NextDouble()) + 1;
+		return (int) (count * RandomSeed.NextDouble()) + 1;
 	}
 
 	private static void Goto(int lineno) 
 	{
-		target = lineno;
+		Target = lineno;
 	}
 
-	public static void Doit(int horizontal_original, int vertical_original) 
+	public static void Doit(int horizontalOriginal, int verticalOriginal) 
 	{
 		Clear();
-		print("Amazing - Copyright by Creative Computing, Morristown, NJ");
-		println();
+		Print("Amazing - Copyright by Creative Computing, Morristown, NJ");
+		Println();
 
 		
 		// Set default variable values
-		int horizontal = horizontal_original;
-		int verticle = vertical_original;
+		int horizontal = horizontalOriginal;
+		int verticle = verticalOriginal;
 		if ( horizontal == 1 || verticle == 1) return;
 
 		int[,] widthArray = new int[ horizontal + 1,verticle + 1];
@@ -59,13 +59,13 @@ public class Amazing
 		for (int i = 1; i <=  horizontal; i++) 
 		{
 			if (i == randomInt)
-				print(":  ");
+				Print(":  ");
 			else
-				print(":--");
+				Print(":--");
 		}
 		// 180
-		print(":");
-		println();
+		Print(":");
+		Println();
 
 		// 190
 		int c = 1;
@@ -77,9 +77,9 @@ public class Amazing
 		int s = 1;
 		Goto(270);
 
-		while (target != -1) 
+		while (Target != -1) 
 		{
-			switch (target) 
+			switch (Target) 
 			{
 				case 210:
 					if (r !=  horizontal)
@@ -624,7 +624,7 @@ public class Amazing
 					Goto(210);
 					continue;
 				case 1200:
-					target = -1;
+					Target = -1;
 					continue;
 			}
 
@@ -633,31 +633,31 @@ public class Amazing
 		// 1200:
 		for (int j = 1; j <= verticle; j++) 
 		{
-			print("I");        // 1210
+			Print("I");        // 1210
 
 			for (int i = 1; i <=  horizontal; i++) 
 			{
 				if (verticalArray[i,j] >= 2)
-					print("   ");  // 1240
+					Print("   ");  // 1240
 				else
-					print("  I");  // 1260
+					Print("  I");  // 1260
 			}
 
-			print(" ");   // 1280
-			println();
+			Print(" ");   // 1280
+			Println();
 
 			for (int i = 1; i <=  horizontal; i++) 
 			{
 				if (verticalArray[i,j] == 0)
-					print(":--");   // 1300, 1340
+					Print(":--");   // 1300, 1340
 				else if (verticalArray[i,j] == 2)
-					print(":--");  // 1310, 1340
+					Print(":--");  // 1310, 1340
 				else
-					print(":  "); // 1320
+					Print(":  "); // 1320
 			}
 
-			print(":");    // 1360
-			println();
+			Print(":");    // 1360
+			Println();
 		}
 	}
 }

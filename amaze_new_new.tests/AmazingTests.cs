@@ -49,12 +49,12 @@ I     I  I     I     I              I        I
 I                 I  I     I     I           I 
 :--:--:--:--:--:--:--:--:--:--:--:  :--:--:--:
 ";
-        Amazing.random = new Random(0);
+        Amazing.RandomSeed = new Random(0);
         Amazing.Doit(15, 20);
         
-        System.Console.WriteLine(Amazing.result);
+        System.Console.WriteLine(Amazing.Result);
         
-        Assert.That(Amazing.result, Is.EqualTo(expected), "Should have the maze that was expected");
+        Assert.That(Amazing.Result, Is.EqualTo(expected), "Should have the maze that was expected");
     }
 
     [Test]
@@ -73,11 +73,11 @@ I  I     I  I
 I        I  I 
 :--:--:--:  :
 ";
-        Amazing.random = new Random(100);
+        Amazing.RandomSeed = new Random(100);
         Amazing.Doit(4, 5);
         
-        System.Console.WriteLine(Amazing.result);
+        System.Console.WriteLine(Amazing.Result);
 
-        Assert.That(Amazing.result, Is.EqualTo(expected), "Should have the maze that was expected");
+        Assert.That(Amazing.Result, Is.EqualTo(expected), "Should have the maze that was expected");
     }
 }

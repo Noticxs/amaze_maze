@@ -1,31 +1,101 @@
-using System;
+// using System;
+
+
+public interface IOutputable
+{
+	void Output(int horizontal, int randomInt, int vertical, int[,] verticalArray);
+	void Initial(int horizontal, int randomInt);
+}
+
+public class TextOnlyMazeOutput : IOutputable
+{
+	public void Output(string s)
+	{
+		throw new NotImplementedException();
+	}
+
+	public void Initial(int horizontal, int randomInt)
+	{
+		// 130:170
+		for (int i = 1; i <=  horizontal; i++) 
+		{
+			if (i == randomInt)
+				Print(":  ");
+			else
+				Print(":--");
+		}
+		// 180
+		Print(":");
+		Println();
+	}
+
+	public void Output(int horizontal, int randomInt, int vertical, int[,] verticalArray)
+	{
+		for (int counterX = 1; counterX <= vertical; counterX++) 
+		{
+			Print("I");        // 1210
+
+			for (int counterY = 1; counterY <=  horizontal; counterY++) 
+			{
+				if (verticalArray[counterY, counterX] >= 2)
+					Print("   ");  // 1240
+				else
+					Print("  I");  // 1260
+			}
+
+			Print(" ");   // 1280
+			Println();
+
+			for (int i = 1; i <=  horizontal; i++) 
+			{
+				if (verticalArray[i,counterX] == 0)
+					Print(":--");   // 1300, 1340
+				else if (verticalArray[i,counterX] == 2)
+					Print(":--");  // 1310, 1340
+				else
+					Print(":  "); // 1320
+			}
+
+			Print(":");    // 1360
+			Println();
+		}
+	}
+	
+	public static void Clear()
+	{
+		Amaze.Result = "";
+	}
+
+	public static void Println() 
+	{
+		Amaze.Result += "\n";
+	}
+
+	public static void Print(string text)
+	{
+		Amaze.Result += text;
+	}
+}
+
+// public class PixelSystem.Console.WriteLine(Result);
+// {
+// 	OnlyMazeOutput : IOutputable
+// 	public void Output(string s)
+// 	{}
+// }
+
 public class Amaze
 {
+	public static string Result = "";
 	private static int Target { get; set; } = 0;
 	public static Random RandomSeed { get; set; } = new Random(0);
-	public static string Result = "";
 
 	public static void Main(string[] args)
 	{
 		Runner(int.Parse(args[0]),int.Parse(args[1]));
-		System.Console.WriteLine(Result);
+		
 	}
-
-	private static void Clear()
-	{
-		Result = "";
-	}
-
-	private static void Println() 
-	{
-		Result += "\n";
-	}
-
-	private static void Print(string text)
-	{
-		Result += text;
-	}
-
+	
 	private static int Random(int count) 
 	{
 		return (int) (count * RandomSeed.NextDouble()) + 1;
@@ -38,35 +108,24 @@ public class Amaze
 
 	public static void Runner(int horizontalOriginal, int verticalOriginal) 
 	{
-		Clear();
-		Print("Amazing - Copyright by Creative Computing, Morristown, NJ");
-		Println();
-
+		TextOnlyMazeOutput.Clear();
+		TextOnlyMazeOutput.Print("Amazing - Copyright by Creative Computing, Morristown, NJ");
+		TextOnlyMazeOutput.Println();
 		
 		// Set default variable values
-		int horizontal = horizontalOriginal;
-		int vertical = verticalOriginal;
-		if ( horizontal == 1 || vertical == 1) return;
+		var horizontal = horizontalOriginal;
+		var vertical = verticalOriginal;
 
-		int[,] widthArray = new int[ horizontal + 1,vertical + 1];
-		int[,] verticalArray = new int[ horizontal + 1,vertical + 1];
+		int[,] widthArray = new int[horizontal + 1, vertical + 1];
+		int[,] verticalArray = new int[horizontal + 1, vertical + 1];
 		
-		int q = 0;
-		int z = 0;
-		int randomInt = Random( horizontal);
+		var q = false;
+		var z = false;
+		var randomInt = Random(horizontal);
 
-		// 130:170
-		for (int i = 1; i <=  horizontal; i++) 
-		{
-			if (i == randomInt)
-				Print(":  ");
-			else
-				Print(":--");
-		}
-		// 180
-		Print(":");
-		Println();
-
+		var output = new TextOnlyMazeOutput();
+		output.Initial(horizontal, randomInt);
+		
 		// 190
 		int c = 1;
 		widthArray[randomInt,1] = c;
@@ -170,13 +229,13 @@ public class Amaze
 						GotoLine(360);
 					continue;
 				case 360:
-					if (z == 1)
+					if (z)
 						GotoLine(410);
 					else
 						GotoLine(370);
 					continue;
 				case 370:
-					q = 1;
+					q = true;
 					GotoLine(390);
 					continue;
 				case 380:
@@ -230,13 +289,13 @@ public class Amaze
 						GotoLine(460);
 					continue;
 				case 460:
-					if (z == 1)
+					if (z)
 						GotoLine(510);
 					else
 						GotoLine(470);
 					continue;
 				case 470:
-					q = 1;
+					q = true;
 					GotoLine(490);
 					continue;
 				case 480:
@@ -278,13 +337,13 @@ public class Amaze
 						GotoLine(540);
 					continue;
 				case 540:
-					if (z == 1)
+					if (z)
 						GotoLine(590);
 					else
 						GotoLine(550);
 					continue;
 				case 550:
-					q = 1;
+					q = true;
 					GotoLine(570);
 					continue;
 				case 560:
@@ -339,13 +398,13 @@ public class Amaze
 						GotoLine(650);
 					continue;
 				case 650:
-					if (z == 1)
+					if (z)
 						GotoLine(700);
 					else
 						GotoLine(660);
 					continue;
 				case 660:
-					q = 1;
+					q = true;
 					GotoLine(680);
 					continue;
 				case 670:
@@ -387,13 +446,13 @@ public class Amaze
 						GotoLine(730);
 					continue;
 				case 730:
-					if (z == 1)
+					if (z)
 						GotoLine(780);
 					else
 						GotoLine(740);
 					continue;
 				case 740:
-					q = 1;
+					q = true;
 					GotoLine(760);
 					continue;
 				case 750:
@@ -436,13 +495,13 @@ public class Amaze
 						GotoLine(820);
 					continue;
 				case 820:
-					if (z == 1)
+					if (z)
 						GotoLine(870);
 					else
 						GotoLine(830);
 					continue;
 				case 830:
-					q = 1;
+					q = true;
 					GotoLine(990);
 					continue;
 				case 840:
@@ -473,13 +532,13 @@ public class Amaze
 						GotoLine(890);
 					continue;
 				case 890:
-					if (z == 1)
+					if (z)
 						GotoLine(930);
 					else
 						GotoLine(900);
 					continue;
 				case 900:
-					q = 1;
+					q = true;
 					GotoLine(920);
 					continue;
 				case 910:
@@ -511,7 +570,7 @@ public class Amaze
 						GotoLine(970);
 					continue;
 				case 970:
-					q = 0;
+					q = false;
 					GotoLine(270);
 					continue;
 				case 980:
@@ -531,7 +590,7 @@ public class Amaze
 						GotoLine(1010);
 					continue;
 				case 1010:
-					q = 0;
+					q = false;
 					GotoLine(270);
 					continue;
 				case 1020:
@@ -567,7 +626,7 @@ public class Amaze
 					GotoLine(600);
 					continue;
 				case 1090:
-					if (q == 1)
+					if (q)
 						GotoLine(1150);
 					else
 						GotoLine(1100);
@@ -599,7 +658,7 @@ public class Amaze
 					GotoLine(270);
 					continue;
 				case 1150:
-					z = 1;
+					z = true;
 					GotoLine(1160);
 					continue;
 				case 1160:
@@ -610,12 +669,12 @@ public class Amaze
 					continue;
 				case 1170:
 					verticalArray[r,s] = 3;
-					q = 0;
+					q = false;
 					GotoLine(1190);
 					continue;
 				case 1180:
 					verticalArray[r,s] = 1;
-					q = 0;
+					q = false;
 					r = 1;
 					s = 1;
 					GotoLine(260);
@@ -628,36 +687,8 @@ public class Amaze
 					continue;
 			}
 
-		}
-
-		// 1200:
-		for (int j = 1; j <= vertical; j++) 
-		{
-			Print("I");        // 1210
-
-			for (int i = 1; i <=  horizontal; i++) 
-			{
-				if (verticalArray[i,j] >= 2)
-					Print("   ");  // 1240
-				else
-					Print("  I");  // 1260
-			}
-
-			Print(" ");   // 1280
-			Println();
-
-			for (int i = 1; i <=  horizontal; i++) 
-			{
-				if (verticalArray[i,j] == 0)
-					Print(":--");   // 1300, 1340
-				else if (verticalArray[i,j] == 2)
-					Print(":--");  // 1310, 1340
-				else
-					Print(":  "); // 1320
-			}
-
-			Print(":");    // 1360
-			Println();
+			output.Output(horizontal, randomInt, vertical, verticalArray);
 		}
 	}
 }
+

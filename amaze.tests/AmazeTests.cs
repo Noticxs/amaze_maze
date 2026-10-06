@@ -52,8 +52,6 @@ I                 I  I     I     I           I
         Amaze.RandomSeed = new Random(0);
         Amaze.Runner(15, 20);
         
-        System.Console.WriteLine(Amaze.Result);
-        
         Assert.That(Amaze.Result, Is.EqualTo(expected), "Should have the maze that was expected");
     }
 
@@ -75,8 +73,6 @@ I        I  I
 ";
         Amaze.RandomSeed = new Random(100);
         Amaze.Runner(4, 5);
-        
-        System.Console.WriteLine(Amaze.Result);
 
         Assert.That(Amaze.Result, Is.EqualTo(expected), "Should have the maze that was expected");
     }
